@@ -150,36 +150,35 @@ export const Styled = {
             background-color: rgba(0, 0, 0, 0.5);
             cursor: pointer;
         }
+
         .linksWrapper {
             border-left: 1px solid #333;
             background-color: #000;
             flex: 0 0 300px;
 
-            a {
+            .searchWrapper {
+                position: relative;
                 height: 40px;
-                display: flex;
-                align-items: center;
-                gap: 30px;
-                color: #aaa;
-                padding: 0 15px;
-                text-decoration: none;
 
-                &:hover {
-                    color: lightcoral;
+                input {
+                    width: 100%;
+                    height: 100%;
+                    border: none;
+                    outline: none;
+                    border: 1px solid #333;
+                    padding: 0 15px;
+                    background-color: inherit;
+                    color: #333;
                 }
 
-                &.active {
-                    color: lightcoral;
+                .clearIconWrapper {
                 }
+            }
 
-                .linksWrapper {
-                    width: 50px;
-
-                    .icon {
-                    }
-                }
-                .textWrapper {
-                }
+            .linksListWrapper {
+                /* border: 1px solid #f00; */
+                overflow: auto;
+                height: calc(100vh - 100px);
             }
         }
     `,
