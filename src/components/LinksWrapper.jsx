@@ -4,6 +4,8 @@ import styled from 'styled-components';
 
 const LINKS = [
     { to: "/", label: "Home" },
+    { to: "/countdown-birthday", label: "Countdown Birthday" },
+    { to: "/sorting-visualizer", label: "Sorting Visualizer" },
     { to: "/unit-converter", label: "Unit Converter" },
     { to: "/typing-test", label: "Typing Test" },
     { to: "/rgb-color-guesser", label: "RGB Color Guesser" },
@@ -91,39 +93,6 @@ export default LinksWrapper
 const Styled = {
     Wrapper: styled.div`
         /* border: 1px solid #f00; */
-
-        .searchWrapper {
-            input {}
-        }
-
-        .linksListWrapper {}        
-
-        /* a {
-            height: 40px;
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            color: #aaa;
-            padding: 0 15px;
-            text-decoration: none;
-
-            &:hover {
-                color: lightcoral;
-            }
-
-            &.active {
-                color: lightcoral;
-            }
-
-            .linksWrapper {
-                width: 50px;
-
-                .icon {
-                }
-            }
-            .textWrapper {
-            }
-        } */
     `,
     SearchWrapper: styled.div`
         border: 1px solid #333;
@@ -162,6 +131,10 @@ const Styled = {
         height: calc(100vh - 100px);
         overflow: hidden;
         overflow-y: auto;
+
+        .empty {
+            padding: 15px;;
+        }
 
         a {
             height: 40px;

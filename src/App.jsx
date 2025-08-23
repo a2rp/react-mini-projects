@@ -14,6 +14,8 @@ const PasswordStrength = lazy(() => import('./apps/passwordStrength'));
 const RGBColorGuesser = lazy(() => import('./apps/rgbColorGuesser'));
 const TypingTest = lazy(() => import('./apps/typingTest'));
 const UnitConverter = lazy(() => import('./apps/unitConverter'));
+const SortingVisualizer = lazy(() => import('./apps/sortingVisualizer'));
+const CountdownBirthday = lazy(() => import('./apps/countdownBirthday'));
 
 const NotFound = lazy(() => sleep(800).then(() => import('./pages/notFound')));
 
@@ -57,6 +59,8 @@ const App = () => {
                             <Route path="/rgb-color-guesser" element={<RGBColorGuesser />} />
                             <Route path="/typing-test" element={<TypingTest />} />
                             <Route path="/unit-converter" element={<UnitConverter />} />
+                            <Route path="/sorting-visualizer" element={<SortingVisualizer />} />
+                            <Route path="/countdown-birthday" element={<CountdownBirthday />} />
 
                             <Route path="*" element={<NotFound />} />
                         </Routes>
