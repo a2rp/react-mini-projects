@@ -1,4 +1,4 @@
-import{d as a,R as s,j as e}from"./index-D_qaO0Rv.js";const r={Wrapper:a.div`
+import{d as a,R as s,j as e}from"./index-Cn821AJe.js";const r={Wrapper:a.div`
         :root {
             --bg: #0b0b0b;
             --panel: #111;
