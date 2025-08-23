@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 const LINKS = [
     { to: "/", label: "Home" },
+    { to: "/password-generator", label: "Password Generator" },
     { to: "/tip-calculator", label: "Tip Calculator" },
     { to: "/markdown-previewer", label: "Markdown Previewer" },
     { to: "/quiz-game", label: "Quiz Game" },
