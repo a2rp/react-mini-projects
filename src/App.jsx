@@ -22,6 +22,7 @@ const QuizGame = lazy(() => import('./apps/quizGame'));
 const MarkdownPreviewer = lazy(() => import('./apps/markdownPreviewer'));
 const TipCalculator = lazy(() => import('./apps/tipCalculator'));
 const PasswordGenerator = lazy(() => import('./apps/passwordGenerator'));
+const ExpenseTracker = lazy(() => import('./apps/expenseTracker'));
 
 const NotFound = lazy(() => sleep(800).then(() => import('./pages/notFound')));
 
@@ -73,6 +74,7 @@ const App = () => {
                             <Route path="/markdown-previewer" element={<MarkdownPreviewer />} />
                             <Route path="/tip-calculator" element={<TipCalculator />} />
                             <Route path="/password-generator" element={<PasswordGenerator />} />
+                            <Route path="/expense-tracker" element={<ExpenseTracker />} />
 
                             <Route path="*" element={<NotFound />} />
                         </Routes>

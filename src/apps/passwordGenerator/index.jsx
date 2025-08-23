@@ -132,9 +132,15 @@ export default function PasswordGenerator() {
                 <Styled.Inner>
                     <Styled.Title>Password Generator</Styled.Title>
                     <Styled.Desc>
-                        Create strong, customizable passwords in one click. Choose length and character sets, avoid ambiguous
-                        characters, ensure every selected type is included, and optionally prevent repeats. The strength meter
-                        estimates entropy based on length and character pool. Nothing leaves your browser.
+                        Create strong, customizable passwords in one click.
+                        <ul style={{ marginLeft: "30px" }}>
+                            <li>Choose length and character sets</li>
+                            <li>avoid ambiguous characters</li>
+                            <li>ensure every selected type is included, and</li>
+                            <li>optionally prevent repeats</li>
+                        </ul>
+                        The strength meter estimates entropy based on length and character pool.
+                        <br /> Nothing leaves your browser.
                     </Styled.Desc>
 
                     <Styled.Row>
