@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 const LINKS = [
     { to: "/", label: "Home" },
+    { to: "/dynamic-fields", label: "Dynamic Fields" },
     { to: "/expense-tracker", label: "Expense Tracker" },
     { to: "/password-generator", label: "Password Generator" },
     { to: "/tip-calculator", label: "Tip Calculator" },
