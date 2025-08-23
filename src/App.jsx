@@ -20,6 +20,7 @@ const ReactionTime = lazy(() => import('./apps/reactionTime'));
 const OtpInput = lazy(() => import('./apps/otpInput'));
 const QuizGame = lazy(() => import('./apps/quizGame'));
 const MarkdownPreviewer = lazy(() => import('./apps/markdownPreviewer'));
+const TipCalculator = lazy(() => import('./apps/tipCalculator'));
 
 const NotFound = lazy(() => sleep(800).then(() => import('./pages/notFound')));
 
@@ -69,6 +70,7 @@ const App = () => {
                             <Route path="/otp-input" element={<OtpInput />} />
                             <Route path="/quiz-game" element={<QuizGame />} />
                             <Route path="/markdown-previewer" element={<MarkdownPreviewer />} />
+                            <Route path="/tip-calculator" element={<TipCalculator />} />
 
                             <Route path="*" element={<NotFound />} />
                         </Routes>
