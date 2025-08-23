@@ -102,6 +102,9 @@ export default function ContrastChecker() {
     const [fg, setFg] = React.useState("#eaeaea");
     const [sampleLarge, setSampleLarge] = React.useState(false);
 
+    const [copied, setCopied] = React.useState("");   // hex string when copied
+    const toastTimer = React.useRef(null);
+
     const ratio = React.useMemo(() => contrastRatio(fg, bg), [fg, bg]);
     const ratioText = React.useMemo(() => ratio.toFixed(2) + ":1", [ratio]);
 
@@ -127,8 +130,18 @@ export default function ContrastChecker() {
     };
 
     const copy = async (text) => {
-        try { await navigator.clipboard.writeText(text); } catch { }
+        try {
+            await navigator.clipboard.writeText(text);
+            setCopied(text);
+            clearTimeout(toastTimer.current);
+            toastTimer.current = setTimeout(() => setCopied(""), 3000);
+        } catch { }
     };
+
+    React.useEffect(() => {
+        return () => clearTimeout(toastTimer.current);
+    }, []);
+
 
     return (
         <Styled.Wrapper>
@@ -246,6 +259,11 @@ export default function ContrastChecker() {
                     </Styled.Panel>
                 </Styled.Grid>
             </Styled.Card>
+            {copied && (
+                <Styled.Toast role="status" aria-live="polite">
+                    Copied {copied}
+                </Styled.Toast>
+            )}
         </Styled.Wrapper>
     );
 }

@@ -4,8 +4,12 @@ import styled from 'styled-components';
 
 const LINKS = [
     { to: "/", label: "Home" },
+    { to: "/unit-converter", label: "Unit Converter" },
+    { to: "/typing-test", label: "Typing Test" },
+    { to: "/rgb-color-guesser", label: "RGB Color Guesser" },
     { to: "/contrast-checker", label: "Contrast Checker" },
     { to: "/stopwatch", label: "Stopwatch" },
+    { to: "/password-strength", label: "Password Strength" },
 ];
 
 const LinksWrapper = () => {

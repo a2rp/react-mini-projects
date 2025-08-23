@@ -1,92 +1,11 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { Styled } from './styled'
 import { NavLink } from 'react-router-dom'
-import { APPS } from "./apps";
-import { MdClear } from 'react-icons/md';
-
-function matches(app, q) {
-    const tokens = q
-        .toLowerCase()
-        .split(/\s+/)
-        .filter(Boolean);
-    if (!tokens.length) return true;
-    const hay = (app.title + " " + app.desc + " " + app.tags.join(" ")).toLowerCase();
-    return tokens.every((t) => hay.includes(t));
-}
 
 const Home = () => {
-    const [searchText, setSearchText] = useState("");
-    const inputRef = useRef(null);
-
-    useEffect(() => {
-        inputRef.current.focus();
-        const onKey = (event) => {
-            if (event.key === "/") {
-                event.preventDefault();
-                inputRef.current?.focus();
-            }
-        };
-        window.addEventListener("keydown", onKey);
-        return () => window.removeEventListener("keydown", onKey);
-    }, []);
-
-    const list = useMemo(() => {
-        // filter → copy → reverse (newest first if you append to APPS)
-        return APPS.filter((a) => matches(a, searchText)).slice().reverse();
-    }, [searchText]);
-
     return (
         <Styled.Wrapper>
             <Styled.Main>
-                <Styled.SearchWrapper>
-                    <input
-                        ref={inputRef}
-                        type="text"
-                        placeholder="Search apps..."
-                        value={searchText}
-                        onChange={(event) => setSearchText(event.target.value)}
-                    />
-                    {searchText && (
-                        <div className='clearButton'
-                            onClick={() => {
-                                setSearchText("");
-                                inputRef.current.focus();
-                            }}
-                            title="Clear"
-                        >
-                            <MdClear size={20} />
-                        </div>
-                    )}
-                </Styled.SearchWrapper>
-
-                <div style={{ margin: "10px 0 0", fontSize: 12, opacity: 0.7 }}>
-                    {list.length} result{list.length !== 1 ? "s" : ""}
-                </div>
-
-                <Styled.AppsWrapper>
-                    {list.length === 0 ? (
-                        <div style={{ opacity: 0.8, padding: "24px 6px" }}>
-                            No matches for <b>{searchText}</b>. Try: <code>accessibility</code>,{" "}
-                            <code>time</code>, <code>design</code>…
-                        </div>
-                    ) : (
-                        list.map((a, idx) => {
-                            const num = list.length - idx; // descending numbering
-                            return (
-                                <NavLink to={a.path} key={a.path}>
-                                    <div className="appLinkWrapper">
-                                        <h2>{num}. {a.title}</h2>
-                                        <p>{a.desc}</p>
-                                        <div className="tags">tags: {a.tags.join(", ")}</div>
-                                    </div>
-                                </NavLink>
-                            );
-                        })
-                    )}
-                </Styled.AppsWrapper>
-
-                <hr />
-
                 <Styled.AboutWrapper>
                     <p>
                         I'm Ashish Ranjan, a full-stack JavaScript developer based in Bengaluru, India. I design and build web products that feel effortless-fast frontends, dependable APIs, and clean DevOps-so teams can ship more in less time.

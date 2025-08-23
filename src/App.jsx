@@ -3,8 +3,6 @@ import { lazy, Suspense, useState } from 'react';
 import { NavLink, Route, Routes } from 'react-router-dom';
 import { Styled } from './App.styled';
 import ScrollToTop from './components/ScrollToTop';
-import { FaHome } from 'react-icons/fa';
-import { CiStopwatch } from 'react-icons/ci';
 import LinksWrapper from './components/LinksWrapper';
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -12,6 +10,10 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const Home = lazy(() => sleep(800).then(() => import('./pages/home')));
 const Stopwatch = lazy(() => import('./apps/stopwatch'));
 const ContrastChecker = lazy(() => import('./apps/contrastChecker'));
+const PasswordStrength = lazy(() => import('./apps/passwordStrength'));
+const RGBColorGuesser = lazy(() => import('./apps/rgbColorGuesser'));
+const TypingTest = lazy(() => import('./apps/typingTest'));
+const UnitConverter = lazy(() => import('./apps/unitConverter'));
 
 const NotFound = lazy(() => sleep(800).then(() => import('./pages/notFound')));
 
@@ -51,6 +53,11 @@ const App = () => {
                             <Route path="/" element={<Home />} />
                             <Route path="/stopwatch" element={<Stopwatch />} />
                             <Route path="/contrast-checker" element={<ContrastChecker />} />
+                            <Route path="/password-strength" element={<PasswordStrength />} />
+                            <Route path="/rgb-color-guesser" element={<RGBColorGuesser />} />
+                            <Route path="/typing-test" element={<TypingTest />} />
+                            <Route path="/unit-converter" element={<UnitConverter />} />
+
                             <Route path="*" element={<NotFound />} />
                         </Routes>
                     </Suspense>

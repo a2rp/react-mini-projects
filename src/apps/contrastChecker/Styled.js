@@ -17,9 +17,21 @@ export const Styled = {
         color: var(--ink);
         display: grid;
         place-items: start center;
-        padding: 24px;
     `,
-
+    Toast: styled.div`
+        position: fixed;
+        right: 16px;
+        bottom: 16px;
+        z-index: 10000;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: #0d0d0d;
+        border: 1px solid #2a2a2a;
+        color: var(--ink);
+        font-size: 13px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        pointer-events: none;
+    `,
     Card: styled.div`
         width: min(920px, 95vw);
         background: var(--panel);
