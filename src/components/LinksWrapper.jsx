@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 const LINKS = [
     { to: "/", label: "Home" },
+    { to: "/otp-input", label: "OTP Input" },
     { to: "/reaction-time", label: "Reaction Time" },
     { to: "/countdown-birthday", label: "Countdown Birthday" },
     { to: "/sorting-visualizer", label: "Sorting Visualizer" },

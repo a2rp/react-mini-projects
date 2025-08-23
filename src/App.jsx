@@ -17,6 +17,7 @@ const UnitConverter = lazy(() => import('./apps/unitConverter'));
 const SortingVisualizer = lazy(() => import('./apps/sortingVisualizer'));
 const CountdownBirthday = lazy(() => import('./apps/countdownBirthday'));
 const ReactionTime = lazy(() => import('./apps/reactionTime'));
+const OtpInput = lazy(() => import('./apps/otpInput'));
 
 const NotFound = lazy(() => sleep(800).then(() => import('./pages/notFound')));
 
@@ -63,6 +64,7 @@ const App = () => {
                             <Route path="/sorting-visualizer" element={<SortingVisualizer />} />
                             <Route path="/countdown-birthday" element={<CountdownBirthday />} />
                             <Route path="/reaction-time" element={<ReactionTime />} />
+                            <Route path="/otp-input" element={<OtpInput />} />
 
                             <Route path="*" element={<NotFound />} />
                         </Routes>
