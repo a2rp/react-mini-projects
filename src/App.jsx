@@ -16,6 +16,7 @@ const TypingTest = lazy(() => import('./apps/typingTest'));
 const UnitConverter = lazy(() => import('./apps/unitConverter'));
 const SortingVisualizer = lazy(() => import('./apps/sortingVisualizer'));
 const CountdownBirthday = lazy(() => import('./apps/countdownBirthday'));
+const ReactionTime = lazy(() => import('./apps/reactionTime'));
 
 const NotFound = lazy(() => sleep(800).then(() => import('./pages/notFound')));
 
@@ -61,6 +62,7 @@ const App = () => {
                             <Route path="/unit-converter" element={<UnitConverter />} />
                             <Route path="/sorting-visualizer" element={<SortingVisualizer />} />
                             <Route path="/countdown-birthday" element={<CountdownBirthday />} />
+                            <Route path="/reaction-time" element={<ReactionTime />} />
 
                             <Route path="*" element={<NotFound />} />
                         </Routes>
