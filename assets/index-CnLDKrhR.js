@@ -1,4 +1,4 @@
-import{d as p,R as g,j as t}from"./index-DJSdmipi.js";const o={Wrapper:p.div`
+import{d as p,R as g,j as t}from"./index-BIVMcmcm.js";const o={Wrapper:p.div`
         :root {
             --bg: #0b0b0b;
             --panel: #111;
