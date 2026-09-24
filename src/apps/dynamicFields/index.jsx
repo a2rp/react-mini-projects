@@ -264,7 +264,7 @@ export default function DynamicFields() {
                                             <td>{r.first}</td>
                                             <td>{r.last}</td>
                                             <td>{r.email}</td>
-                                            <td>{r.phone || <i>—</i>}</td>
+                                            <td>{r.phone || <i>-</i>}</td>
                                         </tr>
                                     ))}
                                 </tbody>
@@ -294,7 +294,7 @@ export default function DynamicFields() {
                         <Styled.ModalTitle id="md-title">Delete this row?</Styled.ModalTitle>
                         <Styled.ModalBody id="md-body">
                             This action cannot be undone.<br />
-                            <b>{modal.payload.first || "—"} {modal.payload.last || ""}</b> • {modal.payload.email || <i>No email</i>}
+                            <b>{modal.payload.first || "-"} {modal.payload.last || ""}</b> • {modal.payload.email || <i>No email</i>}
                         </Styled.ModalBody>
                         <Styled.ModalActions>
                             <Styled.Btn ref={cancelRef} onClick={() => setModal(null)}>Cancel</Styled.Btn>

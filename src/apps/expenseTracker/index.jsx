@@ -15,7 +15,7 @@ const CURRENCIES = [
 const MONTHS = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
 const fmtDate = (iso) => {
     const d = new Date(iso);
-    if (isNaN(d)) return iso || "—";
+    if (isNaN(d)) return iso || "-";
     const m = MONTHS[d.getMonth()];
     const day = String(d.getDate()).padStart(2, "0");
     const y = d.getFullYear();
@@ -198,11 +198,11 @@ export default function ExpenseTracker() {
                         <div className="row">
                             <span>By category</span>
                             <span className="num">
-                                {Object.keys(byCat).length === 0 ? "—" :
+                                {Object.keys(byCat).length === 0 ? "-" :
                                     Object.entries(byCat).map(([k, v]) => `${k}: ${fmt(v)}`).join(" • ")}
                             </span>
                         </div>
-                        <div className="row"><span>Top category</span><b className="num">{topCat ? `${topCat[0]} (${fmt(topCat[1])})` : "—"}</b></div>
+                        <div className="row"><span>Top category</span><b className="num">{topCat ? `${topCat[0]} (${fmt(topCat[1])})` : "-"}</b></div>
                     </Styled.Stat>
 
                     {/* Table */}
@@ -221,7 +221,7 @@ export default function ExpenseTracker() {
                                 <tr key={x.id}>
                                     <td>{fmtDateTime(x)}</td>
                                     <td><span className="tag">{x.cat}</span></td>
-                                    <td>{x.desc || <i>—</i>}</td>
+                                    <td>{x.desc || <i>-</i>}</td>
                                     <td className="num">{fmt(x.amount)}</td>
                                     <td>
                                         <span

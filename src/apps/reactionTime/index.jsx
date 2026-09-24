@@ -119,8 +119,8 @@ export default function ReactionTime() {
                     <Styled.Title>Reaction Time Tester</Styled.Title>
 
                     <Styled.Row>
-                        <span>Best: <Styled.Stat>{best ? `${best} ms` : "—"}</Styled.Stat></span>
-                        <span>Average (last 5): <Styled.Stat>{history.length ? `${avg} ms` : "—"}</Styled.Stat></span>
+                        <span>Best: <Styled.Stat>{best ? `${best} ms` : "-"}</Styled.Stat></span>
+                        <span>Average (last 5): <Styled.Stat>{history.length ? `${avg} ms` : "-"}</Styled.Stat></span>
                         {resultMs != null && <span>Last: <Styled.Stat>{resultMs} ms</Styled.Stat></span>}
                     </Styled.Row>
 

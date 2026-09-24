@@ -186,7 +186,7 @@ export default function PasswordGenerator() {
                     <Styled.Out>
                         <div className="pw">
                             <span className={`text ${prefs.mask && password ? "masked" : ""}`} aria-live="polite">
-                                {password || <i>— generated password will appear here —</i>}
+                                {password || <i>- generated password will appear here -</i>}
                             </span>
                         </div>
 

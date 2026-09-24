@@ -6,7 +6,7 @@ const PREF_KEY = "markdown_preview_pref_v1";
 
 const SAMPLE = `# Markdown Previewer
 
-Type on the left — see preview on the right.
+Type on the left - see preview on the right.
 
 ## Features
 - **Bold**, *italic*, ~~strike~~, \`inline code\`

@@ -332,7 +332,7 @@ export default function QuizGame() {
                                         <tr key={a.id}>
                                             <td>{i + 1}</td>
                                             <td>{a.q}</td>
-                                            <td style={{ color: a.isCorrect ? "var(--ok)" : "var(--bad)" }}>{a.picked ?? <i>—</i>}</td>
+                                            <td style={{ color: a.isCorrect ? "var(--ok)" : "var(--bad)" }}>{a.picked ?? <i>-</i>}</td>
                                             <td>{a.correct}</td>
                                             <td>{a.isCorrect ? "✓" : (a.timedOut ? "⏲" : "✗")}</td>
                                         </tr>

@@ -233,7 +233,7 @@ export default function ContrastChecker() {
                                 <Styled.SampleText
                                     style={{ fontSize: sampleLarge ? 22 : 14, marginTop: 6 }}
                                 >
-                                    0123456789 — Aa Bb Cc
+                                    0123456789 - Aa Bb Cc
                                 </Styled.SampleText>
                             </Styled.SampleTop>
                             <Styled.SampleBottom>

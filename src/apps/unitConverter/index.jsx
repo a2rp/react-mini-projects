@@ -70,7 +70,7 @@ function factorConvert(val, from, to, factors) {
 const DEC_DEFAULT = 4;
 const clamp = (n, min, max) => Math.min(max, Math.max(min, n));
 const fmt = (n, d) => {
-    if (!isFinite(n)) return "—";
+    if (!isFinite(n)) return "-";
     return Number(n.toFixed(clamp(d, 0, 12))).toString();
 };
 

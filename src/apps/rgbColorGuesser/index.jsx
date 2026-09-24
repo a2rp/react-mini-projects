@@ -167,7 +167,7 @@ export default function RGBColorGuesser() {
 
                 <Styled.FooterRow>
                     <div style={{ fontSize: 12, color: "var(--muted)" }}>
-                        Tip: Use the RGB mental model—R controls red channel intensity, etc.
+                        Tip: Use the RGB mental model-R controls red channel intensity, etc.
                     </div>
                     <div style={{ display: "flex", gap: 8 }}>
                         <Styled.Btn onClick={reset}>New Game</Styled.Btn>

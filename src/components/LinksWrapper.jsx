@@ -1,167 +1,43 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react'
-import { NavLink } from 'react-router-dom';
-import styled from 'styled-components';
+import { useEffect, useMemo, useRef, useState } from "react";
+import { FiSearch, FiX } from "react-icons/fi";
+import { NavLink } from "react-router-dom";
+import styled from "styled-components";
 
 const LINKS = [
-    { to: "/", label: "Home" },
-    { to: "/dynamic-fields", label: "Dynamic Fields" },
-    { to: "/expense-tracker", label: "Expense Tracker" },
-    { to: "/password-generator", label: "Password Generator" },
-    { to: "/tip-calculator", label: "Tip Calculator" },
-    { to: "/markdown-previewer", label: "Markdown Previewer" },
-    { to: "/quiz-game", label: "Quiz Game" },
-    { to: "/otp-input", label: "OTP Input" },
-    { to: "/reaction-time", label: "Reaction Time" },
-    { to: "/countdown-birthday", label: "Countdown Birthday" },
-    { to: "/sorting-visualizer", label: "Sorting Visualizer" },
-    { to: "/unit-converter", label: "Unit Converter" },
-    { to: "/typing-test", label: "Typing Test" },
-    { to: "/rgb-color-guesser", label: "RGB Color Guesser" },
-    { to: "/contrast-checker", label: "Contrast Checker" },
-    { to: "/stopwatch", label: "Stopwatch" },
-    { to: "/password-strength", label: "Password Strength" },
+    ["/", "Home"], ["/dynamic-fields", "Dynamic Fields"], ["/expense-tracker", "Expense Tracker"], ["/password-generator", "Password Generator"], ["/tip-calculator", "Tip Calculator"], ["/markdown-previewer", "Markdown Previewer"], ["/quiz-game", "Quiz Game"], ["/otp-input", "OTP Input"], ["/reaction-time", "Reaction Time"], ["/countdown-birthday", "Countdown Birthday"], ["/sorting-visualizer", "Sorting Visualizer"], ["/unit-converter", "Unit Converter"], ["/typing-test", "Typing Test"], ["/rgb-color-guesser", "RGB Color Guesser"], ["/contrast-checker", "Contrast Checker"], ["/stopwatch", "Stopwatch"], ["/password-strength", "Password Strength"],
 ];
 
-const LinksWrapper = () => {
+export default function LinksWrapper() {
     const [searchText, setSearchText] = useState("");
     const inputRef = useRef(null);
+    useEffect(() => { const onKey = (event) => { if (event.key === "/") { event.preventDefault(); inputRef.current?.focus(); } }; window.addEventListener("keydown", onKey); return () => window.removeEventListener("keydown", onKey); }, []);
+    const list = useMemo(() => { const query = searchText.trim().toLowerCase(); return query ? LINKS.filter(([to, label]) => `${to} ${label}`.toLowerCase().includes(query)) : LINKS; }, [searchText]);
 
-    const handleSearchTextChange = (event) => {
-        setSearchText(event.target.value);
-    };
-
-    useEffect(() => {
-        const onKey = (e) => {
-            if (e.key === "/") {
-                e.preventDefault();
-                inputRef.current?.focus();
-            }
-        };
-        window.addEventListener("keydown", onKey);
-        return () => window.removeEventListener("keydown", onKey);
-    }, []);
-
-    const list = useMemo(() => {
-        const q = searchText.trim().toLowerCase();
-        if (!q) return LINKS;
-        return LINKS.filter(
-            (l) =>
-                l.label.toLowerCase().includes(q) ||
-                l.to.toLowerCase().includes(q)
-        );
-    }, [searchText]);
-
-    return (
-        <Styled.Wrapper>
-            <Styled.SearchWrapper>
-                <input
-                    ref={inputRef}
-                    type="text"
-                    value={searchText}
-                    onChange={handleSearchTextChange}
-                    placeholder="Search links..."
-                />
-                {searchText && (
-                    <div
-                        type="button"
-                        className="clearButton"
-                        onClick={() => {
-                            setSearchText("");
-                            inputRef.current?.focus();
-                        }}
-                        title="Clear"
-                        aria-label="Clear search"
-                    >
-                        ×
-                    </div>
-                )}
-            </Styled.SearchWrapper>
-
-            <Styled.LinksListWrapper>
-                {list.length === 0 ? (
-                    <div className="empty">No matches for “{searchText}”.</div>
-                ) : (
-                    list.map(({ to, label, icon: Icon }) => (
-                        <NavLink
-                            key={to}
-                            to={to}
-                            className={({ isActive }) => (isActive ? "active" : undefined)}
-                        >
-                            <div className="textWrapper">{label}</div>
-                        </NavLink>
-                    ))
-                )}
-            </Styled.LinksListWrapper>
-        </Styled.Wrapper>
-    )
+    return <Styled.Wrapper>
+        <Styled.SearchWrapper>
+            <FiSearch aria-hidden="true" />
+            <input ref={inputRef} type="search" value={searchText} onChange={(event) => setSearchText(event.target.value)} placeholder="Search apps" aria-label="Search apps" />
+            {searchText && <button type="button" onClick={() => { setSearchText(""); inputRef.current?.focus(); }} title="Clear search" aria-label="Clear search"><FiX aria-hidden="true" /></button>}
+        </Styled.SearchWrapper>
+        <Styled.LinksListWrapper>
+            {list.length ? list.map(([to, label]) => <NavLink key={to} to={to}>{label}</NavLink>) : <div className="empty">No matches for &quot;{searchText}&quot;.</div>}
+        </Styled.LinksListWrapper>
+    </Styled.Wrapper>;
 }
 
-export default LinksWrapper
-
 const Styled = {
-    Wrapper: styled.div`
-        /* border: 1px solid #f00; */
-    `,
+    Wrapper: styled.div`height: 100%; padding: 15px;`,
     SearchWrapper: styled.div`
-        border: 1px solid #333;
-        height: 40px;
-        position: relative;
-        border-radius: 6px;
-
-        input {
-            border: none;
-            outline: none;
-            height: 100%;
-            background-color: inherit;
-            width: 100%;
-            padding: 0 50px 0 15px;
-            color: #aaa;
-        }
-
-        .clearButton {
-            /* border: 1px solid #f00; */
-            position: absolute;
-            height: 100%;
-            width: 50px;
-            right: 0;
-            top: 0;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            .icon {
-            }
-        }
+        position: relative; height: 42px; display: flex; align-items: center; gap: 8px; padding: 0 10px; border: 1px solid #333; border-radius: 7px;
+        color: #777;
+        &:focus-within { border-color: #ff9c9c; box-shadow: 0 0 0 3px rgba(255, 156, 156, .1); }
+        input { width: 100%; height: 100%; border: 0; outline: 0; background: transparent; color: #eee; }
+        button { display: grid; place-items: center; border: 0; color: #aaa; background: transparent; cursor: pointer; }
     `,
-    LinksListWrapper: styled.div`
-        /* border: 1px solid #f00; */
-        height: calc(100vh - 100px);
-        overflow: hidden;
-        overflow-y: auto;
-
-        .empty {
-            padding: 15px;;
-        }
-
-        a {
-            height: 40px;
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            color: #aaa;
-            padding: 0 15px;
-            text-decoration: none;
-
-            &:hover {
-                color: lightcoral;
-            }
-
-            &.active {
-                color: lightcoral;
-            }
-            .textWrapper {
-            }
-        }
+    LinksListWrapper: styled.nav`
+        height: calc(100vh - 155px); overflow-y: auto; padding-top: 10px;
+        a { display: flex; align-items: center; min-height: 40px; padding: 0 10px; color: #aaa; border: 1px solid transparent; border-radius: 7px; text-decoration: none; transition: color .2s ease, border-color .2s ease, box-shadow .2s ease; }
+        a:hover, a.active { color: #ff9c9c; border-color: #333; box-shadow: 0 0 0 3px rgba(255, 156, 156, .1); }
+        .empty { padding: 15px 10px; color: #777; }
     `,
 };

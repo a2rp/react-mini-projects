@@ -2,184 +2,121 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 export const Styled = {
-    Wrapper: styled.div``,
+    Wrapper: styled.div`min-height: 100vh;`,
     Header: styled.header`
-        border-bottom: 1px solid #333;
         position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 60px;
-        background-color: #000;
+        inset: 0 0 auto;
+        z-index: 9999;
+        min-height: 64px;
         display: flex;
         align-items: center;
         justify-content: center;
-        z-index: 9999;
+        border-bottom: 1px solid #29313d;
+        background: rgba(0, 0, 0, .96);
     `,
     HeaderMain: styled.div`
-        /* border: 1px solid #f00; */
-        position: relative;
         width: 100%;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 0 50px;
-        @media (width < 900px) {
-            padding: 0 15px;
-        }
+        gap: 20px;
+        padding: 0 clamp(15px, 4vw, 50px);
+    `,
+    Brand: styled(NavLink)`
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: #fff;
+        text-decoration: none;
+        transition: color .2s ease, text-shadow .2s ease;
+        &:hover { color: #ff9c9c; text-shadow: 0 0 14px rgba(255, 156, 156, .2); }
+        img { width: 38px; height: 38px; border: 1px solid #333; border-radius: 9px; background: #090909; }
+        span { display: grid; font-size: 14px; font-weight: 700; line-height: 1.1; }
+        small { margin-bottom: 3px; color: #777; font-size: 9px; letter-spacing: .16em; }
     `,
     NavLink: styled(NavLink)`
         color: #fff;
-        text-decoration: none;
-        font-size: 18px;
+        font-size: 14px;
         font-weight: 500;
-        &.active {
-            color: lightcoral;
-        }
+        text-decoration: none;
+        transition: color .2s ease, text-shadow .2s ease;
+        &:hover, &.active { color: #ff9c9c; text-shadow: 0 0 12px rgba(255, 156, 156, .16); }
     `,
-    SliderLinkWrapper: styled.div`
-        /* border: 1px solid #f00; */
-        width: 70px;
-        height: 50px;
+    SliderLinkWrapper: styled.button`
         position: relative;
+        width: 48px;
+        height: 42px;
+        display: block;
+        border: 1px solid #333;
+        border-radius: 7px;
+        background: transparent;
         cursor: pointer;
-
-        &:hover {
-            .line {
-                background-color: #fff;
-            }
-        }
+        transition: border-color .2s ease, box-shadow .2s ease;
+        &:hover { border-color: #ff9c9c; box-shadow: 0 0 0 3px rgba(255, 156, 156, .1); }
     `,
-    Line: styled.div`
+    Line: styled.span`
         position: absolute;
-        margin: auto;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        height: 4px;
-        width: 40px;
+        inset-inline: 10px;
+        top: 19px;
+        height: 3px;
+        border-radius: 4px;
         background-color: #aaa;
-
-        &.line1 {
-            transform: translateY(-10px);
-            transform-origin: left top;
-            transition: transform 0.2s ease, background-color 0.2s ease;
-
-            &.active {
-                transform: translateY(-10px) translateX(3.5px) rotateZ(30deg);
-                background-color: lightcoral;
-            }
-        }
-        &.line2 {
-            transition: transform 0.2s ease, opacity 0.2s ease,
-                background-color 0.2s ease;
-
-            &.active {
-                transform: scaleX(0);
-                opacity: 0;
-                background-color: lightcoral;
-            }
-        }
-        &.line3 {
-            transform: translateY(10px);
-            transform-origin: left bottom;
-            transition: transform 0.2s ease, background-color 0.2s ease;
-
-            &.active {
-                transform: translateY(10px) translateX(3.5px) rotateZ(-30deg);
-                background-color: lightcoral;
-            }
-        }
+        transition: transform .2s ease, opacity .2s ease, background-color .2s ease;
+        &.line1 { transform: translateY(-8px); }
+        &.line3 { transform: translateY(8px); }
+        &.active { background-color: #ff9c9c; }
+        &.line1.active { transform: translateY(0) rotate(45deg); }
+        &.line2.active { transform: scaleX(0); opacity: 0; }
+        &.line3.active { transform: translateY(0) rotate(-45deg); }
     `,
-
-    Main: styled.main`
-        min-height: 100vh;
-        padding: 100px 50px;
-        @media (width<900px) {
-            padding: 80px 15px;
-        }
-    `,
-    Footer: styled.footer`
-        border-top: 1px solid #333;
-        background-color: #000;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    `,
+    Main: styled.main`min-height: 100vh; padding: 104px clamp(15px, 4vw, 50px) 50px;`,
+    Footer: styled.footer`border-top: 1px solid #29313d; background: #000;`,
     FooterMain: styled.div`
-        width: 100%;
-        max-width: 1440px;
+        width: min(100%, 1200px);
+        margin: 0 auto;
+        padding: 26px clamp(15px, 4vw, 50px) 18px;
+    `,
+    FooterTop: styled.div`
         display: flex;
-        align-items: center;
         justify-content: space-between;
-        padding: 15px 50px;
-        @media (width < 900px) {
-            padding: 15px 15px;
-        }
+        gap: 25px;
+        @media (max-width: 700px) { flex-direction: column; }
     `,
-    FooterCol: styled.div`
-        font-size: 12px;
-
-        a {
-            text-decoration: none;
-            padding: 5px 0;
-            border-bottom: 1px solid #fff;
-            color: #fff;
-        }
+    FooterTitle: styled.h2`margin: 0 0 6px; color: #fff; font-size: 1.25rem;`,
+    FooterText: styled.p`max-width: 360px; color: #777;`,
+    FooterGroups: styled.div`display: flex; flex-wrap: wrap; gap: 24px;`,
+    FooterLabel: styled.span`display: block; margin-bottom: 8px; color: #aaa; font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;`,
+    IconLinks: styled.div`
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+        a { width: 31px; height: 31px; display: grid; place-items: center; color: #aaa; border: 1px solid #333; border-radius: 7px; transition: color .2s ease, border-color .2s ease, box-shadow .2s ease; }
+        a:hover { color: #ff9c9c; border-color: #ff9c9c; box-shadow: 0 0 0 3px rgba(255, 156, 156, .1); }
     `,
-
+    FooterBottom: styled.div`
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        margin-top: 22px;
+        padding-top: 15px;
+        color: #777;
+        border-top: 1px solid #29313d;
+        font-size: .76rem;
+        a { color: #fff; font-weight: 700; text-decoration: none; }
+        a:hover { color: #ff9c9c; }
+        @media (max-width: 520px) { flex-direction: column; }
+    `,
     SliderWrapper: styled.div`
         position: fixed;
-        right: 0;
-        top: 60px;
-        background-color: rgba(0, 0, 0, 0.5);
-        width: 0;
-        height: calc(100vh - 60px);
-        overflow: hidden;
-        transition: width 0.2s ease;
-
-        &.active {
-            width: 100%;
-        }
-
+        inset: 64px 0 0;
+        z-index: 9998;
         display: flex;
-
-        .empty {
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            cursor: pointer;
-        }
-
-        .linksWrapper {
-            border-left: 1px solid #333;
-            background-color: #000;
-            flex: 0 0 300px;
-
-            .searchWrapper {
-                position: relative;
-                height: 40px;
-
-                input {
-                    width: 100%;
-                    height: 100%;
-                    border: none;
-                    outline: none;
-                    border: 1px solid #333;
-                    padding: 0 15px;
-                    background-color: inherit;
-                    color: #333;
-                }
-
-                .clearIconWrapper {
-                }
-            }
-
-            .linksListWrapper {
-                /* border: 1px solid #f00; */
-                overflow: auto;
-                height: calc(100vh - 100px);
-            }
-        }
+        width: 0;
+        overflow: hidden;
+        background: rgba(0, 0, 0, .55);
+        transition: width .2s ease;
+        &.active { width: 100%; }
+        .empty { width: 100%; cursor: pointer; }
+        .linksWrapper { flex: 0 0 min(330px, 88vw); overflow: hidden; border-left: 1px solid #333; background: #000; }
     `,
 };
