@@ -1,4 +1,4 @@
-import{d as c,R as r,j as e}from"./index-BIVMcmcm.js";const n={Wrapper:c.div`
+import{d as c,R as r,j as e}from"./index-umwvFSuv.js";const n={Wrapper:c.div`
         :root {
             --bg: #0b0b0b;
             --panel: #111;

@@ -1,4 +1,4 @@
-import{d as l,R as i,j as r}from"./index-BIVMcmcm.js";const t={Wrapper:l.div`
+import{d as l,R as i,j as r}from"./index-umwvFSuv.js";const t={Wrapper:l.div`
         :root {
             --bg: #0b0b0b;
             --panel: #111;
@@ -162,7 +162,7 @@ import{d as l,R as i,j as r}from"./index-BIVMcmcm.js";const t={Wrapper:l.div`
         pointer-events: none;
     `},f="markdown_preview_content_v1",w="markdown_preview_pref_v1",v=`# Markdown Previewer
 
-Type on the left — see preview on the right.
+Type on the left - see preview on the right.
 
 ## Features
 - **Bold**, *italic*, ~~strike~~, \`inline code\`
